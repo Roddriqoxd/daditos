@@ -2,72 +2,38 @@ import { Image, StyleSheet, Platform, View, Button } from 'react-native';
 import Svg, { Ellipse, Path, Rect } from "react-native-svg"
 import * as Animatable from "react-native-animatable";
 import {useRef} from 'react';
+import { ThemedText } from '@/components/ThemedText';
+import Dados from '../componentes/dados';
+import {useAppDispatch, useAppSelector} from '../../redux/store/hooks';
+import {cambiarAleatoriamente} from '../../redux/feactures/dados'
+import {store} from '../../redux/store/store';
+import {Provider} from 'react-redux';
+// let xxx = getRandomOneOrTwo()
 
-let xxx = getRandomOneOrTwo()
-
-function getRandomOneOrTwo() {
-  return Math.floor(Math.random() * 2) + 1;
-}
-
-  function cambiar(){
-    xxx = 2;
-  }
-  
 export default function Example() {
 
+  const dispatch = useAppDispatch()
+  const counter = useAppSelector(state => state.contador.numero)
 
+  let numberDados: number = 1
 
-  if(xxx === 1){
-    return (
-      <View style={styles.container}>
-  
-        <Animatable.View animation="bounceInDown">
-       <Svg
-          width={120}
-          height={120}
-          viewBox="0 0 1000 1000"
-          fill="none"
-        >
-          <Rect width={1000} height={1000} rx={72} fill="#fff" />
-          <Ellipse cx={745} cy={748.5} rx={81} ry={77.5} fill="#000" />
-          <Ellipse cx={255} cy={251.5} rx={81} ry={77.5} fill="#000" />
-        </Svg>
-        </Animatable.View>
-        <View style={styles.botones}>
-        <Button color={'black'} title={xxx.toString()} onPress={cambiar} />
-        </View>
-      </View>
-    );
-  } else if(xxx === 2) {
-    return (
-      <View style={styles.container}>
-  
-        <Animatable.View animation="bounceInDown">
-        <Svg
-                width={120}
-                height={120}
-                viewBox="0 0 1000 1000"
-                fill="none"
-            >
-                <Rect width={1000} height={1000} rx={72} fill="#fff"/>
-                <Ellipse cx={745} cy={748.5} rx={81} ry={77.5} fill="#000"/>
-                <Ellipse cx={255} cy={251.5} rx={81} ry={77.5} fill="#000"/>
-                <Path
-                    d="M581 500.5c0 42.802-36.265 77.5-81 77.5s-81-34.698-81-77.5 36.265-77.5 81-77.5 81 34.698 81 77.5z"
-                    fill="#000"
-                />
-            </Svg>
-        </Animatable.View>
-
-        
-   
-        <View style={styles.botones}>
-        <Button color={'black'} title={xxx.toString()} onPress={cambiar} />
-        </View>
-      </View>
-    );
+  function getRandomOneOrTwo() {
+    dispatch(cambiarAleatoriamente())
   }
 
+
+  return(
+    <Provider store={store}>
+    <View style={styles.container}>
+      <ThemedText type="defaultSemiBold">{counter}</ThemedText>
+      <Dados dados={counter} />
+      <Button
+      title='cambiar'
+      onPress={()=>getRandomOneOrTwo}
+      />
+    </View>
+    </Provider>
+  )
 
 
 }
