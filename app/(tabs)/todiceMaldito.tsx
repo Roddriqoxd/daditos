@@ -1,14 +1,10 @@
-import { Image, StyleSheet, Platform, View, Button } from 'react-native';
-import Svg, { Ellipse, Path, Rect } from "react-native-svg"
-import * as Animatable from "react-native-animatable";
-import {useRef} from 'react';
+import { StyleSheet, View, Button } from 'react-native';
 import { ThemedText } from '@/components/ThemedText';
 import Dados from '../componentes/dados';
-import {useAppDispatch, useAppSelector} from '../../redux/store/hooks';
-import {cambiarAleatoriamente} from '../../redux/feactures/dados'
-// let xxx = getRandomOneOrTwo()
+import { useAppDispatch, useAppSelector } from '../../redux/store/hooks';
+import { cambiarAleatoriamente } from '../../redux/feactures/dados'
 
-export default function Example() {
+export default function TodiseMaldito() {
 
   const dispatch = useAppDispatch()
   const counter = useAppSelector(state => state.contador.numero)
@@ -19,14 +15,14 @@ export default function Example() {
   }
 
 
-  return(
+  return (
 
     <View style={styles.container}>
       <ThemedText type="defaultSemiBold">{counter}</ThemedText>
       <Dados dados={counter} />
       <Button
-      title='cambiar'
-      onPress={getRandomOneOrTwo}
+        title='cambiar'
+        onPress={getRandomOneOrTwo}
       />
     </View>
 
@@ -48,5 +44,5 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: "row",
     gap: 30,
-},
+  },
 });
