@@ -6,8 +6,6 @@ import { ThemedText } from '@/components/ThemedText';
 import Dados from '../componentes/dados';
 import {useAppDispatch, useAppSelector} from '../../redux/store/hooks';
 import {cambiarAleatoriamente} from '../../redux/feactures/dados'
-import {store} from '../../redux/store/store';
-import {Provider} from 'react-redux';
 // let xxx = getRandomOneOrTwo()
 
 export default function Example() {
@@ -15,7 +13,6 @@ export default function Example() {
   const dispatch = useAppDispatch()
   const counter = useAppSelector(state => state.contador.numero)
 
-  let numberDados: number = 1
 
   function getRandomOneOrTwo() {
     dispatch(cambiarAleatoriamente())
@@ -23,18 +20,17 @@ export default function Example() {
 
 
   return(
-    <Provider store={store}>
+
     <View style={styles.container}>
       <ThemedText type="defaultSemiBold">{counter}</ThemedText>
       <Dados dados={counter} />
       <Button
       title='cambiar'
-      onPress={()=>getRandomOneOrTwo}
+      onPress={getRandomOneOrTwo}
       />
     </View>
-    </Provider>
-  )
 
+  )
 
 }
 
