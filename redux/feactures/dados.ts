@@ -2,29 +2,40 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
 
 interface contador {
-    numero: number
+    dadoUno: number;
+    dadoDos: number;
 }
 
-const initialState: contador= {
-    numero: 1
+const initialState: contador = {
+    dadoUno: 0,
+    dadoDos: 0,
 }
 
 function cambiarNumeroDado(): number {
-    return Math.floor(Math.random() * 2) + 1;
-  }
+    return Math.floor(Math.random() * 6) + 1;
+}
 
 const estadoCambio = createSlice({
     name: "contador",
     initialState,
-    reducers:{
-        cambiarAleatoriamente: (state) => {
-            state.numero = cambiarNumeroDado();
+    reducers: {
+        primerDado: (state) => {
+            state.dadoUno = cambiarNumeroDado();
+        },
+        segundoDado: (state) => {
+            state.dadoDos = cambiarNumeroDado();
+        },
+        limpiar: (state) => {
+            state.dadoUno = 0;
+            state.dadoDos = 0;
         }
     }
 })
 
 export const {
-    cambiarAleatoriamente
+    primerDado,
+    segundoDado,
+    limpiar
 } = estadoCambio.actions
 
 export default estadoCambio.reducer

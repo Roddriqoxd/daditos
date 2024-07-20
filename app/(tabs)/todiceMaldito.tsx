@@ -1,31 +1,38 @@
 import { StyleSheet, View, Button } from 'react-native';
 import { ThemedText } from '@/components/ThemedText';
-import Dados from '../componentes/dados';
+import Dados from '../../components/dados/dados';
 import { useAppDispatch, useAppSelector } from '../../redux/store/hooks';
-import { cambiarAleatoriamente } from '../../redux/feactures/dados'
+import { primerDado, segundoDado, limpiar } from '../../redux/feactures/dados'
 
 export default function TodiseMaldito() {
 
   const dispatch = useAppDispatch()
-  const counter = useAppSelector(state => state.contador.numero)
+  const dadoUno = useAppSelector(state => state.contador.dadoUno)
+  const dadoDos = useAppSelector(state => state.contador.dadoDos)
 
 
-  function getRandomOneOrTwo() {
-    dispatch(cambiarAleatoriamente())
+  function lanzar() {
+    dispatch(limpiar())
+    setTimeout(() => {
+      dispatch(primerDado())
+      dispatch(segundoDado())
+    }, 100)
   }
 
 
   return (
-
     <View style={styles.container}>
-      <ThemedText type="defaultSemiBold">{counter}</ThemedText>
-      <Dados dados={counter} />
+      <ThemedText type="defaultSemiBold">{dadoUno + dadoDos}</ThemedText>
+      <View style={styles.dados} onPointerDown={lanzar}>
+        <Dados dados={dadoUno} />
+        <Dados dados={dadoDos} />
+      </View>
+
       <Button
         title='cambiar'
-        onPress={getRandomOneOrTwo}
+        onPress={lanzar}
       />
     </View>
-
   )
 
 }
@@ -39,6 +46,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     gap: 8,
     backgroundColor: '#056E32'
+  },
+  dados: {
+    display: 'flex',
+    flexDirection: 'row',
+    gap: 20
   },
   botones: {
     display: 'flex',
