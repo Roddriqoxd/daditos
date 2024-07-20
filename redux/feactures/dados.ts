@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
 
-interface contador {
+interface Contador {
     dadoUno: number;
     dadoDos: number;
 }
 
-const initialState: contador = {
+const initialState: Contador = {
     dadoUno: 0,
     dadoDos: 0,
 }

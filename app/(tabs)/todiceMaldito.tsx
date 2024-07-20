@@ -19,7 +19,6 @@ export default function TodiseMaldito() {
     }, 100)
   }
 
-
   return (
     <View style={styles.container}>
       <ThemedText type="defaultSemiBold">{dadoUno + dadoDos}</ThemedText>
