@@ -6,6 +6,12 @@ import React, { useState } from 'react';
 
 export default function TabTwoScreen() {
 
+  function xxx(){
+    alert('sss')
+  }
+
+  xxx();
+
   const retos = useAppSelector(state => state.retos)
   const dispatch = useAppDispatch()
 
