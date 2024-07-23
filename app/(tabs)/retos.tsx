@@ -6,29 +6,37 @@ import React, { useState } from 'react';
 
 export default function TabTwoScreen() {
 
-  function xxx(){
-    alert('sss')
-  }
+  // function xxx(){
+  //   alert('sss')
+  // }
 
-  xxx();
+  // let retos: Retos;
 
-  const retos = useAppSelector(state => state.retos)
+  const retos= useAppSelector(state => state.retos)
+  const retosNuevos: Retos;
   const dispatch = useAppDispatch()
 
-  const [dos, setDos] = useState(retos["2"])
-  const [tres, setTres] = useState(retos["3"]);
-  const [cuatro, setCuatro] = useState(retos["4"]);
-  const [cinco, setCinco] = useState(retos["5"]);
+  const [dos, setDos] = useState(retos.dos);
+  const [tres, setTres] = useState(retos.dos);
+   const [cuatro, setCuatro] = useState(retos["cuatro"]);
+   const [cinco, setCinco] = useState(retos["cinc"]);
   const [seis, setSeis] = useState(retos["6"]);
-  const [siete, setSiete] = useState(retos["7"]);
-  const [ocho, setOcho] = useState(retos["8"]);
-  const [nueve, setNueve] = useState(retos["9"]);
-  const [diez, setDiez] = useState(retos["10"]);
+   const [siete, setSiete] = useState(retos["7"]);
+   const [ocho, setOcho] = useState(retos["8"]);
+   const [nueve, setNueve] = useState(retos["9"]);
+   const [diez, setDiez] = useState(retos["10"]);
   const [once, setOnce] = useState(retos["11"]);
-  const [doce, setDoce] = useState(retos["12"]);
+   const [doce, setDoce] = useState(retos["12"]);
 
 
   function guardarDatos(){
+    retosNuevos = {
+      dos: dos,
+      tres: tres,
+      cuatro: cuatro,
+
+    }
+      
 
   }
 
@@ -48,14 +56,13 @@ export default function TabTwoScreen() {
         <TextInput
           style={styles.input}
           value={tres}
-          onChangeText={setTres}
         />
       </View>
       <View style={styles.contenedor}>
         <Text style={styles.text}>{4}</Text>
         <TextInput
           style={styles.input}
-          value={cuatro}
+          value={retos.cuatro}
           onChangeText={setCuatro}
         />
       </View>
@@ -124,7 +131,7 @@ export default function TabTwoScreen() {
         />
       </View>
       <View style={styles.botones}>
-        <Button color={'green'} title="Guardar" onPress={guardarDatos} />
+        <Button color={'green'} title="Guardar" />
         <Button color={'red'} title="Cancelar" />
       </View>
 
