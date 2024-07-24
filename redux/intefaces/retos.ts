@@ -1,14 +1,14 @@
 export interface Retos {
-    1: string;
-    2: string;
-    3: string;
-    4: string;
-    5: string;
-    6: string;
-    7: string;
-    8: string;
-    9: string;
-    10: string;
-    11: string;
-    12: string;
+    uno?: string;
+    dos: string;
+    tres: string;
+    cuatro: string;
+    cinco: string;
+    seis: string;
+    siete: string;
+    ocho: string;
+    nueve: string;
+    diez: string;
+    once: string;
+    doce: string;
 }

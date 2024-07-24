@@ -13,20 +13,20 @@ export default function TabTwoScreen() {
   // let retos: Retos;
 
   const retos= useAppSelector(state => state.retos)
-  const retosNuevos: Retos;
+  let retosNuevos: Retos;
   const dispatch = useAppDispatch()
 
   const [dos, setDos] = useState(retos.dos);
-  const [tres, setTres] = useState(retos.dos);
-   const [cuatro, setCuatro] = useState(retos["cuatro"]);
-   const [cinco, setCinco] = useState(retos["cinc"]);
-  const [seis, setSeis] = useState(retos["6"]);
-   const [siete, setSiete] = useState(retos["7"]);
-   const [ocho, setOcho] = useState(retos["8"]);
-   const [nueve, setNueve] = useState(retos["9"]);
-   const [diez, setDiez] = useState(retos["10"]);
-  const [once, setOnce] = useState(retos["11"]);
-   const [doce, setDoce] = useState(retos["12"]);
+  const [tres, setTres] = useState(retos.tres);
+   const [cuatro, setCuatro] = useState(retos.cuatro);
+   const [cinco, setCinco] = useState(retos.cinco);
+  const [seis, setSeis] = useState(retos.seis);
+   const [siete, setSiete] = useState(retos.siete);
+   const [ocho, setOcho] = useState(retos.ocho);
+   const [nueve, setNueve] = useState(retos.nueve);
+   const [diez, setDiez] = useState(retos.diez);
+  const [once, setOnce] = useState(retos.once);
+   const [doce, setDoce] = useState(retos.doce);
 
 
   function guardarDatos(){
@@ -34,9 +34,17 @@ export default function TabTwoScreen() {
       dos: dos,
       tres: tres,
       cuatro: cuatro,
-
+      cinco: cinco,
+      seis: seis,
+      siete: siete,
+      ocho: ocho,
+      nueve: nueve,
+      diez: diez,
+      once: once,
+      doce: doce
     }
-      
+     
+    dispatch(editar(retosNuevos))
 
   }
 
@@ -131,7 +139,7 @@ export default function TabTwoScreen() {
         />
       </View>
       <View style={styles.botones}>
-        <Button color={'green'} title="Guardar" />
+        <Button color={'green'} title="Guardar" onPress={()=> guardarDatos()} />
         <Button color={'red'} title="Cancelar" />
       </View>
 

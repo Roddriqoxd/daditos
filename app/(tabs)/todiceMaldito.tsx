@@ -11,7 +11,7 @@ export default function TodiseMaldito() {
   const retos: Retos = useAppSelector(state => state.retos)
   const dadoUno = useAppSelector(state => state.contador.dadoUno)
   const dadoDos = useAppSelector(state => state.contador.dadoDos)
-  let retoTodise: string = (retos as any)[dadoUno + dadoDos]
+  let retoTodise: string = retos.dos
 
 
   function lanzar() {
