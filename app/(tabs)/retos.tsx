@@ -1,8 +1,9 @@
 import { Retos } from '@/redux/intefaces/retos';
 import { StyleSheet, TextInput, Text, View, Button } from 'react-native';
-import { editar } from '../../redux/feactures/editar';
+import { editar, restaurar } from '../../redux/feactures/editar';
 import { useAppDispatch, useAppSelector } from "../../redux/store/hooks";
 import React, { useState } from 'react';
+import { RetosOrigiles } from '@/constants/RetosOriginales';
 
 export default function TabTwoScreen() {
 
@@ -12,24 +13,24 @@ export default function TabTwoScreen() {
 
   // let retos: Retos;
 
-  const retos= useAppSelector(state => state.retos)
+  const retos = useAppSelector(state => state.retos)
   let retosNuevos: Retos;
   const dispatch = useAppDispatch()
 
   const [dos, setDos] = useState(retos.dos);
   const [tres, setTres] = useState(retos.tres);
-   const [cuatro, setCuatro] = useState(retos.cuatro);
-   const [cinco, setCinco] = useState(retos.cinco);
+  const [cuatro, setCuatro] = useState(retos.cuatro);
+  const [cinco, setCinco] = useState(retos.cinco);
   const [seis, setSeis] = useState(retos.seis);
-   const [siete, setSiete] = useState(retos.siete);
-   const [ocho, setOcho] = useState(retos.ocho);
-   const [nueve, setNueve] = useState(retos.nueve);
-   const [diez, setDiez] = useState(retos.diez);
+  const [siete, setSiete] = useState(retos.siete);
+  const [ocho, setOcho] = useState(retos.ocho);
+  const [nueve, setNueve] = useState(retos.nueve);
+  const [diez, setDiez] = useState(retos.diez);
   const [once, setOnce] = useState(retos.once);
-   const [doce, setDoce] = useState(retos.doce);
+  const [doce, setDoce] = useState(retos.doce);
 
 
-  function guardarDatos(){
+  function guardarDatos() {
     retosNuevos = {
       dos: dos,
       tres: tres,
@@ -43,9 +44,26 @@ export default function TabTwoScreen() {
       once: once,
       doce: doce
     }
-     
-    dispatch(editar(retosNuevos))
 
+    dispatch(editar(retosNuevos))
+  }
+
+  function restaurarDados() {
+    dispatch(restaurar())
+
+      setDos(RetosOrigiles.dos)
+      setTres(RetosOrigiles.tres)
+      setCuatro(RetosOrigiles.cuatro);
+      setCinco(RetosOrigiles.cinco);
+      setSeis(RetosOrigiles.seis);
+      setSiete(RetosOrigiles.siete);
+      setOcho(RetosOrigiles.ocho);
+      setNueve(RetosOrigiles.nueve);
+      setDiez(RetosOrigiles.diez);
+      setOnce(RetosOrigiles.once);
+      setDoce(RetosOrigiles.doce);
+
+    
   }
 
   return (
@@ -64,13 +82,14 @@ export default function TabTwoScreen() {
         <TextInput
           style={styles.input}
           value={tres}
+          onChangeText={setTres}
         />
       </View>
       <View style={styles.contenedor}>
         <Text style={styles.text}>{4}</Text>
         <TextInput
           style={styles.input}
-          value={retos.cuatro}
+          value={cuatro}
           onChangeText={setCuatro}
         />
       </View>
@@ -139,8 +158,8 @@ export default function TabTwoScreen() {
         />
       </View>
       <View style={styles.botones}>
-        <Button color={'green'} title="Guardar" onPress={()=> guardarDatos()} />
-        <Button color={'red'} title="Cancelar" />
+        <Button color={'green'} title="Guardar" onPress={guardarDatos} />
+        <Button color={'red'} title="Cancelar" onPress={restaurarDados} />
       </View>
 
     </View>

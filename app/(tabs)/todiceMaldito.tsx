@@ -4,14 +4,14 @@ import Dados from '../../components/dados/dados';
 import { useAppDispatch, useAppSelector } from '../../redux/store/hooks';
 import { primerDado, segundoDado, limpiar } from '../../redux/feactures/dados'
 import { Retos } from '@/redux/intefaces/retos';
+import { numeroALetras } from '@/utils/numeroALetra';
 
 export default function TodiseMaldito() {
 
   const dispatch = useAppDispatch()
-  const retos: Retos = useAppSelector(state => state.retos)
+  const retos: any = useAppSelector(state => state.retos)
   const dadoUno = useAppSelector(state => state.contador.dadoUno)
   const dadoDos = useAppSelector(state => state.contador.dadoDos)
-  let retoTodise: string = retos.dos
 
 
   function lanzar() {
@@ -24,7 +24,7 @@ export default function TodiseMaldito() {
 
   return (
     <View style={styles.container}>
-      <ThemedText type="subtitle">{retoTodise}</ThemedText>
+      <ThemedText type="subtitle">{numeroALetras(dadoDos+dadoUno, retos)}</ThemedText>
       <View style={styles.dados} onPointerDown={lanzar}>
         <Dados dados={dadoUno} />
         <Dados dados={dadoDos} />
