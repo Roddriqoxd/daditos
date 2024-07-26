@@ -7,12 +7,6 @@ import { RetosOrigiles } from '@/constants/RetosOriginales';
 
 export default function TabTwoScreen() {
 
-  // function xxx(){
-  //   alert('sss')
-  // }
-
-  // let retos: Retos;
-
   const retos = useAppSelector(state => state.retos)
   let retosNuevos: Retos;
   const dispatch = useAppDispatch()
@@ -28,7 +22,6 @@ export default function TabTwoScreen() {
   const [diez, setDiez] = useState(retos.diez);
   const [once, setOnce] = useState(retos.once);
   const [doce, setDoce] = useState(retos.doce);
-
 
   function guardarDatos() {
     retosNuevos = {
@@ -51,19 +44,17 @@ export default function TabTwoScreen() {
   function restaurarDados() {
     dispatch(restaurar())
 
-      setDos(RetosOrigiles.dos)
-      setTres(RetosOrigiles.tres)
-      setCuatro(RetosOrigiles.cuatro);
-      setCinco(RetosOrigiles.cinco);
-      setSeis(RetosOrigiles.seis);
-      setSiete(RetosOrigiles.siete);
-      setOcho(RetosOrigiles.ocho);
-      setNueve(RetosOrigiles.nueve);
-      setDiez(RetosOrigiles.diez);
-      setOnce(RetosOrigiles.once);
-      setDoce(RetosOrigiles.doce);
-
-    
+    setDos(RetosOrigiles.dos)
+    setTres(RetosOrigiles.tres)
+    setCuatro(RetosOrigiles.cuatro);
+    setCinco(RetosOrigiles.cinco);
+    setSeis(RetosOrigiles.seis);
+    setSiete(RetosOrigiles.siete);
+    setOcho(RetosOrigiles.ocho);
+    setNueve(RetosOrigiles.nueve);
+    setDiez(RetosOrigiles.diez);
+    setOnce(RetosOrigiles.once);
+    setDoce(RetosOrigiles.doce);
   }
 
   return (
@@ -207,6 +198,3 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   }
 });
-
-
-

@@ -13,7 +13,6 @@ export default function TodiseMaldito() {
   const dadoUno = useAppSelector(state => state.contador.dadoUno)
   const dadoDos = useAppSelector(state => state.contador.dadoDos)
 
-
   function lanzar() {
     dispatch(limpiar())
     setTimeout(() => {
@@ -24,7 +23,7 @@ export default function TodiseMaldito() {
 
   return (
     <View style={styles.container}>
-      <ThemedText type="subtitle">{numeroALetras(dadoDos+dadoUno, retos)}</ThemedText>
+      <ThemedText type="subtitle">{numeroALetras(dadoDos + dadoUno, retos)}</ThemedText>
       <View style={styles.dados} onPointerDown={lanzar}>
         <Dados dados={dadoUno} />
         <Dados dados={dadoDos} />
