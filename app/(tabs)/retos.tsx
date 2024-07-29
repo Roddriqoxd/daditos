@@ -43,7 +43,6 @@ export default function TabTwoScreen() {
 
   function restaurarDados() {
     dispatch(restaurar())
-
     setDos(RetosOrigiles.dos)
     setTres(RetosOrigiles.tres)
     setCuatro(RetosOrigiles.cuatro);
